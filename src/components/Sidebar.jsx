@@ -9,6 +9,9 @@ export default function Sidebar(props) {
       >
         <h4 className="text-snippet">{note.body.split("/n")[0]}</h4>
       </div>
+      <button onClick={(event) => props.handleDelete(event, note.id)}>
+        del
+      </button>
     </div>
   ));
   return (

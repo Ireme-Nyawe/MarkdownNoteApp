@@ -26,6 +26,7 @@ export default function App() {
   }
 
   function updateNote(text) {
+    // update and rearrange not at top
     setNotes((oldNotes) => {
       const newArray = [];
       for (let i = 0; i < oldNotes.length; i++) {
@@ -38,14 +39,6 @@ export default function App() {
       }
       return newArray;
     });
-
-    // setNotes((oldNotes) =>
-    //   oldNotes.map((oldNote) => {
-    //     return oldNote.id == currentNoteId
-    //       ? { ...oldNote, body: text }
-    //       : oldNote;
-    //   })
-    // );
   }
 
   function findCurrentNote() {
@@ -54,6 +47,10 @@ export default function App() {
         return note.id === currentNoteId;
       }) || notes[0]
     );
+  }
+  function handleDelete(event, noteId) {
+    event.stopPropagation();
+    setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
   }
   return (
     <main>
@@ -64,6 +61,7 @@ export default function App() {
             currentNote={findCurrentNote()}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
+            handleDelete={handleDelete}
           />
           {currentNoteId && notes.length > 0 && (
             <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
