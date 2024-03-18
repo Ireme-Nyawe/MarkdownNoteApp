@@ -6,7 +6,7 @@ import Split from "react-split";
 import {data} from "./data";
 
 
-export default function App() {
+function Appp() {
   const [notes, setNotes] = useState([]);
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
@@ -73,4 +73,8 @@ export default function App() {
       }
     </main>
   )
+}
+
+export default function App(){
+  return console.log("asa")
 }
