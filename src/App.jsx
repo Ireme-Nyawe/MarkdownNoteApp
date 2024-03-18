@@ -3,10 +3,10 @@ import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
 import { nanoid } from "nanoid";
 import Split from "react-split";
-import {data} from "./data";
+import data from "./data";
 
 
-function Appp() {
+export default function App() {
   const [notes, setNotes] = useState([]);
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
@@ -73,8 +73,4 @@ function Appp() {
       }
     </main>
   )
-}
-
-export default function App(){
-  return console.log("asa")
 }
