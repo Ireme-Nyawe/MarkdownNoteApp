@@ -1,0 +1,20 @@
+*{
+  font-family: Karl,sans-serif;
+  box-sizing: border-box;
+}
+.split{
+  display: flex;
+}
+ul{
+  display: flex;
+  list-style: none;
+}
+ul li{
+  padding: 10px;
+}
+button{
+  margin-right: 10px;
+}
+.split sidebar{
+  background: rebeccapurple;
+}

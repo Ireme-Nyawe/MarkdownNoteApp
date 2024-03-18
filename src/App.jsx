@@ -5,7 +5,6 @@ import { nanoid } from "nanoid";
 import Split from "react-split";
 import data from "./data";
 
-
 export default function App() {
   const [notes, setNotes] = useState([]);
   const [currentNoteId, setCurrentNoteId] = useState(
@@ -31,46 +30,35 @@ export default function App() {
     );
   }
 
-  function findCurrentNote(){
-    return notes.find(note=>{
-      return note.id === currentNoteId
-    }) || notes[0]
+  function findCurrentNote() {
+    return (
+      notes.find((note) => {
+        return note.id === currentNoteId;
+      }) || notes[0]
+    );
   }
   return (
     <main>
-      {
-        notes.length>0?
-        <Split
-        size={[30,70]}
-        direction="horizontal"
-        className="split"
-        >
-        <Sidebar
-        notes={notes}
-        currentNote={findCurrentNote()}
-        setCurrentNoteId={setCurrentNoteId}
-        newNote={createNewNote}
-        />
-        {
-          currentNoteId&&
-          notes.length>0&&
-          <Editor
-          currentNote={findCurrentNote()}
-          updateNote={updateNote}
+      {notes.length > 0 ? (
+        <Split size={[30, 70]} direction="horizontal" className="split">
+          <Sidebar
+            notes={notes}
+            currentNote={findCurrentNote()}
+            setCurrentNoteId={setCurrentNoteId}
+            newNote={createNewNote}
           />
-        }
+          {currentNoteId && notes.length > 0 && (
+            <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
+          )}
         </Split>
-        :
+      ) : (
         <div className="no-notes">
           <h1>You have no notes</h1>
-          <button
-          className="first-note"
-          onClick={createNewNote}>
+          <button className="first-note" onClick={createNewNote}>
             create one now
           </button>
         </div>
-
-      }
+      )}
     </main>
-  )
+  );
 }
